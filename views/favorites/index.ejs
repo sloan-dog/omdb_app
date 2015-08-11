@@ -1,10 +1,10 @@
 <h1>FAVORITES!</h1>
 <% myFavorites.forEach(function(favorite) { %>
   <a href="/show/<%= favorite.imdbId %>"><%= favorite.title %></a>
-  <form method="POST" action="/comments">
-    <input name="favoriteId" type="hidden" value="<%=favorite.id %>">
-    <input type="submit">
-  </form>
   <%= favorite.year %><br>
+  <form method="POST" action="/comments/<%=favorite.id %>">
+    <!-- <input name="favoriteID" type="hidden" value="<%=favorite.id %>"> -->
+    <input type="submit" value="add a comment">
+  </form>
   <img src="<%= favorite.poster %>"><br><br>
 <% }) %>

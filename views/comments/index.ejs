@@ -1,6 +1,16 @@
+
+
 <h1>Comments</h1>
 <form method="POST" action="/comments">
   <input type="text" name="commentText">
-  <input name="favoriteId type="hidden" value="<%= myFavorite %>">
-  <input type="submit">
+  <input name="favoriteId" type="hidden" value="<%= myFavorite %>">
+  <input type="submit" value="Add a comment">
 </form>
+<h2><%= comments[0].favorite.title %></h2>
+
+<% comments.forEach(function(comment) { %>
+  <div class="well">
+    <%= comment.text %>
+  </div>
+
+<% }) %>

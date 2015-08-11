@@ -3,6 +3,7 @@ var app = express();
 var bodyParser = require('body-parser');
 var ejsLayouts = require('express-ejs-layouts');
 var request = require('request');
+var db = require('./models');
 
 require('express-helpers')(app);
 
@@ -10,6 +11,10 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/public'));
 app.use(ejsLayouts);
+
+app.use('/favorites', require('./controllers/favorites.js'));
+
+app.use('/comments', require('./controllers/comments.js'));
 
 app.get("/", function(req, res) {
     res.render("main/index")
@@ -29,10 +34,11 @@ app.get("/show/:id", function(req,res){
   var url = 'http://www.omdbapi.com/?i='+showTerm+'&plot=full&r=json&tomatoes=true';
   request(url, function(error, response, data){
     var data = JSON.parse(data)
-    res.render("main/show", {data: data});
+    res.render("main/show", {data: data, movieId:showTerm});
   });
 
 });
+
 
 // SEARCH FUNCTION FROM DAILY PLANET LAB \\
 // app.get("/search", function(req,res){

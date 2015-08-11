@@ -4,6 +4,17 @@
 </div>
 
 <div class="text-center">
+<form method="POST" action="/favorites">
+  <input name="movieId" type="text" value="<%= data.imdbID %>"><br>
+  <input name="title" type="text" value="<%= data.Title %>"><br>
+  <input name="year" type="text" value="<%= data.Year %>"><br>
+  <input name="poster" type="text" value="<%= data.Poster %>"><br>
+  <input type="submit" value="Save to Favorites">
+</form>
+
+
+
+
   <h2 class="well"><b class="btn-default well disabled"><%= data.Title %></b></h2>
    <b>IMDB Rating:</b><br>
     <% for (var i = 0; i < Math.round(data.imdbRating); i++) { %>

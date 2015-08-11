@@ -16,6 +16,7 @@ app.use('/favorites', require('./controllers/favorites.js'));
 
 app.use('/comments', require('./controllers/comments.js'));
 
+
 app.get("/", function(req, res) {
     res.render("main/index")
 });
